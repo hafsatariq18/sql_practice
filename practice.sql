@@ -26,4 +26,7 @@ SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM patients;
   province_name
 FROM patients
   JOIN province_names ON province_names.province_id = patients.province_id;
+
+# Show how many patients have a birth_date with 2010 as the birth year.
+SELECT COUNT(*) AS patient_count FROM patients WHERE YEAR(birth_date) = 2010;
  
