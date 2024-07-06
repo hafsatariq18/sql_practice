@@ -33,3 +33,6 @@ SELECT COUNT(*) AS patient_count FROM patients WHERE YEAR(birth_date) = 2010;
 # Show the first_name, last_name, and height of the patient with the greatest height.
 SELECT first_name, last_name, height FROM patients ORDER BY height DESC LIMIT 1;
  
+# Show all columns for patients who have one of the following patient_ids:
+1,45,534,879,1000
+SELECT * FROM patients WHERE patient_id IN (1, 45, 534, 879, 1000); 
