@@ -19,13 +19,7 @@ SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM patients;
 
 # Show first name, last name, and the full province name of each patient.
   Example: 'Ontario' instead of 'ON'
-
- SELECT
-  first_name,
-  last_name,
-  province_name
-FROM patients
-  JOIN province_names ON province_names.province_id = patients.province_id;
+SELECT first_name, last_name, province_name FROM patients JOIN province_names ON province_names.province_id = patients.province_id;
 
 # Show how many patients have a birth_date with 2010 as the birth year.
 SELECT COUNT(*) AS patient_count FROM patients WHERE YEAR(birth_date) = 2010;
@@ -36,3 +30,6 @@ SELECT first_name, last_name, height FROM patients ORDER BY height DESC LIMIT 1;
 # Show all columns for patients who have one of the following patient_ids:
 1,45,534,879,1000
 SELECT * FROM patients WHERE patient_id IN (1, 45, 534, 879, 1000); 
+
+# Show the total number of admissions
+SELECT COUNT(*) AS patient_id FROM admissions;
