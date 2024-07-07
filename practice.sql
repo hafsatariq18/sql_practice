@@ -33,3 +33,6 @@ SELECT * FROM patients WHERE patient_id IN (1, 45, 534, 879, 1000);
 
 # Show the total number of admissions
 SELECT COUNT(*) AS patient_id FROM admissions;
+
+#Show all the columns from admissions where the patient was admitted and discharged on the same day.
+SELECT * FROM admissions WHERE admission_date = discharge_date;
