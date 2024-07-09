@@ -42,3 +42,6 @@ SELECT patient_id, COUNT(*) AS total_admissions FROM admissions WHERE patient_id
 
 #Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?
 SELECT distinct city FROM patients where province_id = 'NS';
+
+# Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70
+SELECT first_name, last_name, birth_date FROM patients where height > 160 AND weight > 70;
