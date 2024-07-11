@@ -57,3 +57,6 @@ For example, if two or more people are named 'John' in the first_name column the
 If only 1 person is named 'Leo' then include them in the output.
 
 SELECT distinct first_name FROM patients group by first_name having count(*) = 1;
+
+# Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+SELECT patient_id, first_name FROM patients WHERE first_name LIKE 's%' AND first_name LIKE '%s' AND LENGTH(first_name) >= 6;
