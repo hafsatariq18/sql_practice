@@ -60,3 +60,12 @@ SELECT distinct first_name FROM patients group by first_name having count(*) = 1
 
 # Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
 SELECT patient_id, first_name FROM patients WHERE first_name LIKE 's%' AND first_name LIKE '%s' AND LENGTH(first_name) >= 6;
+
+# Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+Primary diagnosis is stored in the admissions table.
+
+SELECT patients.first_name, 
+patients.last_name,
+patients.patient_id FROM patients JOIN admissions
+ON patients.patient_id = admissions.patient_id
+where admissions.diagnosis = 'Dementia';
