@@ -69,3 +69,7 @@ patients.last_name,
 patients.patient_id FROM patients JOIN admissions
 ON patients.patient_id = admissions.patient_id
 where admissions.diagnosis = 'Dementia';
+
+# Display every patient's first_name.
+Order the list by the length of each name and then by alphabetically.
+SELECT first_name FROM patients ORDER BY LENGTH(first_name), first_name;
