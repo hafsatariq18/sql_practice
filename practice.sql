@@ -77,5 +77,12 @@ SELECT first_name FROM patients ORDER BY LENGTH(first_name), first_name;
 # Show the total amount of male patients and the total amount of female patients in the patients table.
 Display the two results in the same row.
 SELECT 
-    (SELECT COUNT(*) FROM patients WHERE gender = 'M') AS male_count,
-    (SELECT COUNT(*) FROM patients WHERE gender = 'F') AS female_count;
+  (SELECT COUNT(*) FROM patients WHERE gender = 'M') AS male_count,
+  (SELECT COUNT(*) FROM patients WHERE gender = 'F') AS female_count;
+
+# Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
+SELECT  first_name, last_name, allergies FROM patients WHERE allergies = 'Penicillin' OR allergies = 'Morphine'
+ORDER BY 
+allergies ASC, 
+first_name ASC, 
+last_name ASC;
