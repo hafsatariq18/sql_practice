@@ -89,3 +89,6 @@ last_name ASC;
 
 # Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
 SELECT patient_id, diagnosis FROM admissions group by patient_id, diagnosis having count(*)>1;
+
+# Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
+SELECT city, count(*) AS total_patients FROM patients group by city order by total_patients desc, city asc;
