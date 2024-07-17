@@ -92,3 +92,8 @@ SELECT patient_id, diagnosis FROM admissions group by patient_id, diagnosis havi
 
 # Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
 SELECT city, count(*) AS total_patients FROM patients group by city order by total_patients desc, city asc;
+
+# Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"
+SELECT first_name, last_name,'Patient' AS role FROM patients UNION ALL
+SELECT first_name, last_name,'Doctor' AS role FROM doctors;
