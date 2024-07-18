@@ -97,3 +97,7 @@ SELECT city, count(*) AS total_patients FROM patients group by city order by tot
 The roles are either "Patient" or "Doctor"
 SELECT first_name, last_name,'Patient' AS role FROM patients UNION ALL
 SELECT first_name, last_name,'Doctor' AS role FROM doctors;
+
+# Show all allergies ordered by popularity. Remove NULL values from query.
+SELECT allergies, COUNT(*) as popularity FROM patients WHERE allergies IS NOT NULL
+GROUP BY allergies ORDER BY popularity DESC;
