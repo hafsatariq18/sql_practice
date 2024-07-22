@@ -117,3 +117,7 @@ GROUP BY province_id HAVING sum_height >= 7000
 
 # Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
 SELECT max (weight) - min (weight) as weight_difference FROM patients where last_name = 'Maroni';
+
+# Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+SELECT DAY(admission_date) AS day_of_month, COUNT(*) AS admission_count FROM admissions
+GROUP BY day_of_month ORDER BY admission_count DESC;
