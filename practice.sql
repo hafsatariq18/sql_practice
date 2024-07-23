@@ -121,3 +121,6 @@ SELECT max (weight) - min (weight) as weight_difference FROM patients where last
 # Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
 SELECT DAY(admission_date) AS day_of_month, COUNT(*) AS admission_count FROM admissions
 GROUP BY day_of_month ORDER BY admission_count DESC;
+
+# Show all columns for patient_id 542's most recent admission_date.
+SELECT * FROM admissions WHERE patient_id = 542 ORDER BY admission_date DESC LIMIT 1;
