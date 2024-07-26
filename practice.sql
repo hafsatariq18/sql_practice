@@ -18,7 +18,7 @@ UPDATE patients SET allergies = 'NKA' WHERE allergies is NULL;
 SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM patients;
 
 # Show first name, last name, and the full province name of each patient.
-  Example: 'Ontario' instead of 'ON'
+Example: 'Ontario' instead of 'ON'
 SELECT first_name, last_name, province_name FROM patients JOIN province_names ON province_names.province_id = patients.province_id;
 
 # Show how many patients have a birth_date with 2010 as the birth year.
@@ -138,3 +138,9 @@ Every admission has been attended by a doctor.
 SELECT first_name, last_name, COUNT(*) AS total_admissions
 FROM doctors d JOIN admissions a ON d.doctor_id = a.attending_doctor_id
 GROUP BY d.first_name, d.last_name;
+
+# For each doctor, display their id, full name, and the first and last admission date they attended.
+SELECT doctor_id, CONCAT(d.first_name, ' ', d.last_name) AS full_name, 
+MIN(admission_date) AS first_date, MAX(admission_date) AS last_date
+FROM doctors d JOIN admissions a ON d.doctor_id = a.attending_doctor_id
+GROUP BY d.doctor_id, d.first_name, d.last_name;
