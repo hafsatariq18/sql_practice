@@ -144,3 +144,10 @@ SELECT doctor_id, CONCAT(d.first_name, ' ', d.last_name) AS full_name,
 MIN(admission_date) AS first_date, MAX(admission_date) AS last_date
 FROM doctors d JOIN admissions a ON d.doctor_id = a.attending_doctor_id
 GROUP BY d.doctor_id, d.first_name, d.last_name;
+
+# Display the total amount of patients for each province. Order by descending.
+SELECT COUNT(patients.patient_id) AS total_patients, province_names.province_name
+FROM patients
+JOIN province_names ON patients.province_id = province_names.province_id
+GROUP BY province_names.province_name
+ORDER BY total_patients DESC;
