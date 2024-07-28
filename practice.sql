@@ -151,3 +151,15 @@ FROM patients
 JOIN province_names ON patients.province_id = province_names.province_id
 GROUP BY province_names.province_name
 ORDER BY total_patients DESC;
+
+# For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
+SELECT 
+    CONCAT(patients.first_name, ' ', patients.last_name) AS patient_full_name,
+    admissions.diagnosis,
+    CONCAT(doctors.first_name, ' ', doctors.last_name) AS doctor_full_name
+FROM 
+    admissions
+JOIN 
+    patients ON admissions.patient_id = patients.patient_id
+JOIN 
+    doctors ON admissions.attending_doctor_id = doctors.doctor_id;
