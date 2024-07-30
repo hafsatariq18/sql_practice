@@ -163,3 +163,11 @@ JOIN
     patients ON admissions.patient_id = patients.patient_id
 JOIN 
     doctors ON admissions.attending_doctor_id = doctors.doctor_id;
+
+# display the first name, last name and number of duplicate patients based on their first name and last name.
+
+Ex: A patient with an identical name can be considered a duplicate.
+SELECT first_name, last_name, COUNT(*) 
+FROM patients 
+GROUP BY first_name, last_name 
+HAVING COUNT(*) > 1;
