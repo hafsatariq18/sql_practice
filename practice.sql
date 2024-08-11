@@ -241,3 +241,8 @@ The password must be the following, in order:
 SELECT DISTINCT p.patient_id, CONCAT( p.patient_id, LEN(p.last_name), YEAR(p.birth_date)) AS temp_password 
 FROM patients p JOIN admissions a ON p.patient_id = a.patient_id;
 
+# Each admission costs $50 for patients without insurance, and $10 for patients with insurance. All patients with an even patient_id have insurance.
+Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have insurance. Add up the admission_total cost for each has_insurance group.
+SELECT CASE WHEN p.patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
+SUM(CASE WHEN p.patient_id % 2 = 0 THEN 10 ELSE 50 END) AS admission_total
+FROM patients p JOIN admissions a ON p.patient_id = a.patient_id GROUP BY has_insurance;
