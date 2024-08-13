@@ -246,3 +246,7 @@ Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have 
 SELECT CASE WHEN p.patient_id % 2 = 0 THEN 'Yes' ELSE 'No' END AS has_insurance,
 SUM(CASE WHEN p.patient_id % 2 = 0 THEN 10 ELSE 50 END) AS admission_total
 FROM patients p JOIN admissions a ON p.patient_id = a.patient_id GROUP BY has_insurance;
+
+# Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name
+SELECT pn.province_name FROM patients p JOIN province_names pn ON p.province_id = pn.province_id
+GROUP BY pn.province_name HAVING SUM(CASE WHEN p.gender = 'M' THEN 1 ELSE 0 END) > SUM(CASE WHEN p.gender = 'F' THEN 1 ELSE 0 END);
