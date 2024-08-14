@@ -250,3 +250,13 @@ FROM patients p JOIN admissions a ON p.patient_id = a.patient_id GROUP BY has_in
 # Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name
 SELECT pn.province_name FROM patients p JOIN province_names pn ON p.province_id = pn.province_id
 GROUP BY pn.province_name HAVING SUM(CASE WHEN p.gender = 'M' THEN 1 ELSE 0 END) > SUM(CASE WHEN p.gender = 'F' THEN 1 ELSE 0 END);
+
+# We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
+- First_name contains an 'r' after the first two letters.
+- Identifies their gender as 'F'
+- Born in February, May, or December
+- Their weight would be between 60kg and 80kg
+- Their patient_id is an odd number
+- They are from the city 'Kingston'
+SELECT * FROM patients WHERE First_name LIKE '__%r%' AND Gender = 'F' AND MONTH(birth_date) IN (2, 5, 12)
+AND Weight BETWEEN 60 AND 80 AND Patient_id % 2 <> 0 AND City = 'Kingston';
