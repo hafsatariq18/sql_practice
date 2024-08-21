@@ -264,3 +264,7 @@ AND Weight BETWEEN 60 AND 80 AND Patient_id % 2 <> 0 AND City = 'Kingston';
 # Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
 SELECT CONCAT(ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM patients)), 
 2),'%') AS percent_male FROM patients WHERE gender = 'M';
+
+# Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+SELECT province_name FROM province_names ORDER BY
+CASE WHEN province_name = 'Ontario' THEN 0 ELSE 1 END, province_name ASC;
