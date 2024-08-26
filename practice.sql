@@ -300,3 +300,5 @@ GROUP BY
     admission_date
 ORDER BY 
     admission_date;
+# Show the category_name and description from the categories table sorted by category_name.
+SELECT category_name, description from categories order by category_name;
