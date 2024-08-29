@@ -308,3 +308,7 @@ SELECT contact_name, address, city from customers where country not in ('Germany
 
 # Show order_date, shipped_date, customer_id, Freight of all orders placed on 2018 Feb 26
 SELECT order_date, shipped_date, customer_id,freight from orders where order_date = "2018-02-26";
+
+# Show the employee_id, order_id, customer_id, required_date, shipped_date from all orders shipped later than the required date
+SELECT employee_id, order_id, customer_id, required_date, shipped_date from orders 
+where shipped_date > required_date;
