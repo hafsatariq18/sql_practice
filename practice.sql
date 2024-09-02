@@ -315,3 +315,7 @@ where shipped_date > required_date;
 
 # Show all the even numbered Order_id from the orders table
 SELECT order_id from orders where order_id %2=0;
+
+# Show the city, company_name, contact_name of all customers from cities which contains the letter 'L' in the city name, sorted by contact_name
+SELECT city, company_name, contact_name from customers where city like '%L%' order by
+contact_name;
