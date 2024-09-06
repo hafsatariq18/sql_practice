@@ -322,3 +322,6 @@ contact_name;
 
 # Show the company_name, contact_name, fax number of all customers that has a fax number. (not null)
 SELECT company_name,contact_name, fax from customers where fax is not null;
+
+# Show the first_name, last_name. hire_date of the most recently hired employee.
+select first_name, last_name, max(hire_date) as hire_date from employees;
