@@ -325,3 +325,9 @@ SELECT company_name,contact_name, fax from customers where fax is not null;
 
 # Show the first_name, last_name. hire_date of the most recently hired employee.
 select first_name, last_name, max(hire_date) as hire_date from employees;
+
+# Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
+SELECT ROUND(AVG(unit_price), 2) AS average_unit_price,
+SUM(units_in_stock) AS total_units_in_stock,
+SUM(CASE WHEN discontinued = 1 THEN 1 ELSE 0 END) AS total_discontinued_products
+FROM products;
