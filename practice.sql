@@ -331,3 +331,15 @@ SELECT ROUND(AVG(unit_price), 2) AS average_unit_price,
 SUM(units_in_stock) AS total_units_in_stock,
 SUM(CASE WHEN discontinued = 1 THEN 1 ELSE 0 END) AS total_discontinued_products
 FROM products;
+
+# Show the ProductName, CompanyName, CategoryName from the products, suppliers, and categories table
+SELECT 
+    p.product_name, 
+    s.company_name, 
+    c.category_name
+FROM 
+    products p
+JOIN 
+    suppliers s ON p.supplier_id = s.supplier_id
+JOIN 
+    categories c ON p.category_id = c.category_id;
