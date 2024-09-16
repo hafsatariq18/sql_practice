@@ -350,3 +350,11 @@ SELECT c.category_name,
 FROM categories c
 JOIN products p ON c.category_id = p.category_id
 GROUP BY c.category_name;
+
+# Show the city, company_name, contact_name from the customers and suppliers table merged together.
+Create a column which contains 'customers' or 'suppliers' depending on the table it came from.
+SELECT city, company_name, contact_name, 'customers' AS source
+FROM customers
+UNION ALL
+SELECT city, company_name, contact_name, 'suppliers' AS source
+FROM suppliers;
